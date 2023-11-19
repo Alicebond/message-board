@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1 New Message
+  form(method='POST', action='/new')
+    div 
+      lable(for='name') Name:
+      br
+      input#name(type='text' name='name') 
+    br
+    div
+      lable(for='message') Message:
+      br
+      textarea#message(type='text' name='message')
+    br
+    button Submit
+
+  a(href="/") Back to message board 

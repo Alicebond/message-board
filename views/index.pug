@@ -3,3 +3,12 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+
+  each msg in messages
+    .text-box   
+      strong=msg.user + ":"
+      p=msg.text
+      i
+        small=msg.added.toUTCString()
+
+  a(href="/new") Click to leave new message
