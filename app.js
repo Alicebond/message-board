@@ -3,10 +3,21 @@ const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
+const mongoose = require("mongoose");
 
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const newMsgRouter = require("./routes/new");
+const { username, password } = require("./config");
+
+// Connect to database
+mongoose.set("strictQuery", false);
+const mongoDB = `mongodb+srv://${username}:${password}@cluster0.dl8fiqe.mongodb.net/message_board?retryWrites=true&w=majority`;
+
+async function main() {
+  await mongoose.connect(mongoDB);
+}
+main().catch((err) => console.log(err));
 
 const app = express();
 
